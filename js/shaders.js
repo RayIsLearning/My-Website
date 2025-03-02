@@ -7,7 +7,7 @@ function addShaderScript(id, type, source) {
 }
 
 // Vertex Shader
-addShaderScript("vs", "x-shader/x-vertex", `
+addShaderScript("vs", "notjs", `
 uniform mat4 u_viewProjection;
 uniform vec3 u_lightWorldPos;
 uniform mat4 u_viewInverse;
@@ -36,7 +36,7 @@ void main() {
 `);
 
 // Fragment Shader
-addShaderScript("fs", "x-shader/x-fragment", `
+addShaderScript("fs", "notjs", `
 precision mediump float;
 
 varying vec4 v_position;
