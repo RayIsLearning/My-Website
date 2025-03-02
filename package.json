@@ -1,0 +1,20 @@
+{
+  "name": "ToShare",
+  "version": "1.0.0",
+  "description": "My website that uses HTML, CSS, and JavaScript for routing. It uses WebGL for the graphics in the header and renders the body and footer dynamically.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RayIsLearning/My-Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RayIsLearning/My-Website/issues"
+  },
+  "homepage": "https://github.com/RayIsLearning/My-Website#readme"
+}

@@ -85,3 +85,11 @@
         renderContent(path);
         renderTitle(path);
     });
+
+    function openNav() {//for the dropdown menu
+        document.getElementById("myNav").style.height = "100%";
+      }
+      
+      function closeNav() {
+        document.getElementById("myNav").style.height = "0%";
+      }
