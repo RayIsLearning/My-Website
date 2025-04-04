@@ -28,7 +28,7 @@
 
   @media (max-width: 600px) {
     canvas {
-        height: 80px;  /* Changes the height of the canvas on small screens */
+        height: 100px;  /* Changes the height of the canvas on small screens */
     }
   }
 
