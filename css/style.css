@@ -1,22 +1,46 @@
-* {
-    box-sizing: border-box;
+* {box-sizing: border-box;}
+
+  .header {
+    position: relative;
+    display: inline-block;
   }
 
   canvas {
     display: block;
     width: 100vw;
     height: 300px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: white;
+}
+
+  .noCanvas canvas {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    canvas {
+        height: 80px;  /* Changes the height of the canvas on small screens */
+    }
   }
 
   @keyframes colorChange {
     0% {
-      background-color: #ff6347; /* Red */
+      background-color: #ff6347; 
     }
     50% {
-      background-color: #32cd32; /* Green */
+      background-color: #32cd32; 
     }
     100% {
-      background-color: #1e90ff; /* Blue */
+      background-color: #1e90ff; 
     }
   }
   /*
@@ -39,23 +63,11 @@
   .header {
     grid-area: header;
     background-color: #69696900;
-    /*padding: 0px;*/
+    padding: 0px;
     text-align: center;
     font-size: 28px;
   }
   
-  /* The content container */
-  #content {
-    display: grid;
-    grid-template-areas: 
-      'header header header header header header' 
-      'left left middle middle right right' 
-      'footer footer footer footer footer footer';
-     /*grid-column-gap: 10px; - if you want gap between the columns */
-    height: auto;
-    object-fit: cover;
-    overflow: hidden;
-  } 
 
    /* The grid container */
    .grid-container {
@@ -68,32 +80,17 @@
     height: auto;
     object-fit: cover;
     overflow: hidden;
+    box-sizing: border-box;
   } 
-    /* The grid container */
-    .content {
-    display: grid;
-    grid-template-areas: 
-      'header header header header header header' 
-      'left left middle middle right right' 
-      'footer footer footer footer footer footer';
-      /*grid-column-gap: 10px; - if you want gap between the columns */
-    height: auto;
-    object-fit: cover;
-    overflow: hidden;
-    } 
-
-  
   .left,
   .middle,
   .right {
     padding: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    padding-right: 10;
+    padding-right: 10px;
     padding-bottom: 10px;
-    
-    /*height: 550px;  Should be removed. Only for demonstration */
-    
+        
   }
   
   /* Style the left column */
@@ -101,10 +98,12 @@
     grid-area: left;
     text-align: center;
     overflow: hidden;
-    background-color:#aaa;
+    background-color: black;
+    color:white;
   }
   .left:hover{
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.747);
+    color:black;
   }
   
   
@@ -113,12 +112,11 @@
     grid-area: middle;
     text-align: center;
     overflow: hidden;
-    background-color:#bbb;
     
   }
 
   .middle:hover{
-    background-color: aquamarine;
+    background-color: rgb(180, 250, 255);
   }
   
   /* Style the right column */
@@ -126,23 +124,35 @@
     grid-area: right;
     text-align: center;
     overflow: hidden;
-    background-color:#858585;
+    color: white;
+    background-color:#000000;
   }
 
   .right:hover{
-    background-color: rgb(233, 64, 64);
+    background-color: white;
+    color:black;
   }
 
   /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-  @media (max-width: 1000px) {
-    .grid-container  {
+  @media (max-width:1401px) {
+    .grid-container {
       grid-template-areas: 
-        'header header header header header header'
-        'left left left left left left' 
-        'middle middle middle middle middle middle' 
-        'right right right right right right' 
-        'footer footer footer footer footer footer';
-    }
+          'header'
+          'left'
+          'middle'
+          'right'
+          'footer';
+      grid-template-rows: auto;
+      grid-area:unset; /* All grid items combined into one scrollable zone */
+      display: flex;         /* Enables stacking */
+      flex-direction: column; /* Aligns grid items vertically */
+                  /* Spacing between items gap: 10px; */
+      
+      overflow-y: auto;      /* Single scrollbar for grid items */
+      max-height: 100%;      /* Ensures content doesn't exceed available space */
+      
+      
+  }
   }
   .fa {
     padding: 20px;
@@ -153,28 +163,36 @@
     border-radius: 50%;
   }
 
-    /* Style the footer */
-    .footer {
-      display: flex;
-      grid-area: footer;
-      background-color: #000000;
-      color:#ffffff;
-      
-      align-items:center;
-      justify-content:space-between;
-      padding: 10px;
+.footer {
+  display: flex;
+  grid-area: footer;
+  background-color: #000000;
+  color: #ffffff;
+  align-items: center;
+  justify-content: space-between; /* Keeps the other items spaced */
+  padding: 10px;
+  width: 100%;
+  position: relative; /* Ensures the h3 can be centered relative to this container */
+}
 
-      width: 100%;
-    }
-    .footer img {
-      max-width: 50px;
-      height: auto;
-    }
-    .footer h3 {
-      margin: 0;
-      text-align: center; /* Centers the text in the middle */
-      flex-grow: 1; /* Allows the text to take up remaining space */
-  }
+.footer img {
+  max-width: 50px;
+  height: auto;
+}
+
+
+#f {
+  margin: 0;
+  text-align: center; /* Centers the text inside h3 */
+  position: absolute; /* Take it out of the flow of flexbox */
+  left: 50%; /* Move it to the center horizontally */
+  transform: translateX(-50%); /* Adjust to ensure it’s perfectly centered */
+}
+
+.footer b{
+  margin-left: auto;
+  text-align:right;
+}
 
   .overlay {
     height: 0%;
@@ -191,10 +209,16 @@
   
   .overlay-content {
     position: relative;
-    top: 28%;
+    top: 28%;/* Default value */
     width: 100%;
     text-align: center;
     margin-top: 30px;
+  }
+
+  @media only screen and (max-width:1401px) {
+    .overlay-content {
+        top: 50%; /* Adjust the top percentage for smaller screens */
+    }
   }
   
   .overlay a {
@@ -217,13 +241,31 @@
     font-size: 60px;
   }
   
-  @media screen and (max-height: 450px) {
+  @media screen and (max-height:450px) {
     .overlay {overflow-y: auto;}
-    .overlay a {font-size: 20px}
+    .overlay a {font-size: 12px}
     .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
+    font-size: 30px;
+    top: 8px;
+    right: 15px;
+    }
+    .middle {
+      border-left: 3px solid black;
+      border-right: 3px solid black;
+    }
+  }
+
+  @media screen and (max-width:600) {
+    .overlay {overflow-y: auto;}
+    .overlay a {font-size: 12px}
+    .overlay .closebtn {
+    font-size: 30px;
+    top: 8px;
+    right: 15px;
+    }
+    .middle {
+      border-left: 3px solid black;
+      border-right: 3px solid black;
     }
   }
  
@@ -242,7 +284,7 @@
     color: #fff;
     text-align:center;
     vertical-align:center;
-    border-radius: 6px;
+    border-radius: 2px;
     padding: 5px 0;
     font-size: 16pt;
     
@@ -280,6 +322,125 @@
       100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
 
+  .image-container {
+    position: relative;
+    width: 100%; 
+    max-width: 467px; /* Keeps image from being too wide */
+    margin: auto;
+}
 
+    /* Default image size */
+  .responsive-img {
+    width: 467px;
+    height: 467px;
+  }
 
+  /* Default image size */
+  .responsive-img-small {
+    align-self: center;
+    justify-self: center;
+    display: block;
+    margin: auto;
+    display: inline-block;
+  }
 
+  /* Media query for screens smaller than 600px */
+  @media (max-width: 600px) {
+    .responsive-img {
+        width: 200px;  /* Resize image for small screens */
+        height: 200px;
+    }
+    .responsive-img-small{
+        width: 250px;  /* Resize image for small screens */
+        height: 100px;
+    }
+    .middle {
+      border-left: 3px solid black;
+      border-right: 3px solid black;
+    }
+  }
+
+  /* Media query for screens larger than 600px but smaller than 1000px */
+  @media (min-width: 601px) and (max-width: 1000px) {
+    .responsive-img {
+        width: 350px;  /* Resize image for medium-sized screens */
+        height: 350px;
+    }
+    .middle {
+      border-left: 3px solid black;
+      border-right: 3px solid black;
+    }
+    .shake-on-hover{
+      animation-delay: 10s;
+      animation-name: shake, none;
+      animation-duration: 0.5s, 9.5s;
+      animation-iteration-count: 20;
+      animation-timing-function: ease-in-out, linear;
+    }
+  }
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Change to contrast the image */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.07); /* Dark transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .overlay-text {
+      font-size: 14px; /* Smaller font for smaller screens */
+      padding: 15px;
+      width: 90%; /* Wider text block for mobile */
+  }
+  .middle {
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+  }
+  .shake-on-hover{
+    animation-delay: 10s;
+    animation-name: shake, none;
+    animation-duration: 0.5s, 9.5s;
+    animation-iteration-count: 20;
+    animation-timing-function: ease-in-out, linear;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-text {
+      font-size: 12px; /* Even smaller text */
+      padding: 10px;
+      width: 95%;
+      background: rgba(0, 0, 0, 0.4);
+  }
+  .middle {
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+  }
+
+  .shake-on-hover{
+    animation-delay: 10s;
+    animation-name: shake, none;
+    animation-duration: 0.5s, 9.5s;
+    animation-iteration-count: 20;
+    animation-timing-function: ease-in-out, linear;
+  }
+}
+
+.timeline {
+  width: 100%;
+  height: 100%;
+  background-color: #f1f1f1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}

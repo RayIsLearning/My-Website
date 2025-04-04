@@ -1,36 +1,98 @@
     // Function to render content based on the URL
     function renderContent(url) {
-        
         if (url === '/') {  // HOME
             fetch('home.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content').innerHTML = data;
+        
+                    // Reapply the default CSS
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = './css/style.css';  // Replace with the actual path to your default CSS file
+                    document.head.appendChild(link);
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
                 });
+        }
         
-        } else if (url === '/about') {//ABOUT ME
+        else if (url === '/about') {//ABOUT ME
             fetch('about.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content').innerHTML = data;
+                    // Reapply the default CSS
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = './css/style.css';  // Replace with the actual path to your default CSS file
+                    document.head.appendChild(link);
                 })
+
                 .catch(error => {
                     console.error('Error loading the content:', error);
                 });
-        
-        } else if (url === '/software') {//WARES
+        } 
+
+        else if (url === '/software') {//WARES
             fetch('software.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content').innerHTML = data;
+                    // Reapply the default CSS
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = './css/style.css';  // Replace with the actual path to your default CSS file
+                    document.head.appendChild(link);
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
                 });
-        } else {
+        } 
+
+        else if (url === '/roman') {//WARES
+            fetch('newRoman.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                    // Reapply the default CSS
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = './css/style.css';  // Replace with the actual path to your default CSS file
+                    document.head.appendChild(link);
+                })
+                .catch(error => {
+                    console.error('Error loading the content:', error);
+                });
+        } 
+
+        else if (url === '/timeline') { // timeline
+            fetch('timeline.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Set the fetched HTML content to the #content element
+                    document.getElementById('content').innerHTML = data;
+        
+                    // Define contentElement by selecting the #content element
+                    const contentElement = document.getElementById('content');
+        
+                    // Add the 'timeline-page' class to #content
+                    contentElement.classList.add('timeline-page');
+        
+                    // Create a new <link> element for the specific CSS file
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = './css/timeline.css';  
+        
+                    // Append the new CSS file to the <head>
+                    document.head.appendChild(link);
+                })
+                .catch(error => {
+                    console.error('Error loading the content:', error);
+                });
+        }
+        
+        else {
             document.getElementById('content').innerHTML = '404 - Page Not Found';
         }
     }
@@ -38,11 +100,29 @@
             function renderTitle(url) {
         if (url === '/') {
             document.title = 'Home';
-        } else if (url === '/about') {
+            document.querySelector('.header-text').textContent = 'Ray Cooke Welcomes You!';
+        } 
+        
+        else if (url === '/about') {
             document.title = 'About';
-        } else if (url === '/software') {
+            document.querySelector('.header-text').textContent = 'All About Ray';
+        } 
+        
+        else if (url === '/software') {
             document.title = 'Projects';
-        } else {
+            document.querySelector('.header-text').textContent = 'JavaScript Powered Pages';
+        } 
+
+        else if (url === '/roman') {
+            document.title = 'Roman Numeral Converter';
+            document.querySelector('.header-text').textContent = 'Numeral Converter';
+        } 
+
+        else if (url === '/timeline') {
+            document.title = 'Raymonds Timeline';
+        } 
+        
+        else {
             document.title = '404 - Page Not Found';
         }
     }
@@ -64,12 +144,26 @@
         if (event.target.closest('#homeLink')) {
             event.preventDefault(); // Prevent default link behavior
             navigateTo('/');
-        } else if (event.target.closest('#aboutLink')) {
+        } 
+        
+        else if (event.target.closest('#aboutLink')) {
             event.preventDefault();
             navigateTo('/about');
-        } else if (event.target.closest('#softwareLink')) {
+        } 
+        
+        else if (event.target.closest('#softwareLink')) {
             event.preventDefault();
             navigateTo('/software');
+        }
+
+        else if (event.target.closest('#romanLink')) {
+            event.preventDefault();
+            navigateTo('/roman');
+        }
+
+        else if (event.target.closest('#timeLink')) {
+            event.preventDefault();
+            navigateTo('/timeline');
         }
     });
 

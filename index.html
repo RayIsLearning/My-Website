@@ -6,24 +6,20 @@
     <style>@import url('https://fonts.googleapis.com/css2?family=Monomakh&display=swap');</style>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" type="image/x-icon" href="./assets/Images/Badge1.PNG">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
     <div class="grid-container">
-        <div class="header"><canvas id="c"></canvas></div>
+
+        <div class="header"><canvas id="c"></canvas>
+            <div class="header-text" id="header-text"></div> 
+        </div>
+
         <div id="myNav" class="overlay">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="overlay-content">
-            <div class="tooltip">
-                <span class="tooltiptext">My family, faith, and creative pursuits motivate me to continuously improve myself. My unwavering commitment to lifelong growth, integrity, and empathy is non-negotiable. My creative skills make the world a better place through music, sculpture, and computer software. My leadership skills harbor positive results while upholding the uttermost commitment to team development and mentorship. I enjoy web design and coding in JavaScript, C++, Python, and Java. I value remote collaboration whenever possible and have demonstrated a keen ability to develop lucrative business relationships remotely. While driven for great business results, my greatest treasure is time with my family. My long-term goals are to be remembered as a good father to my children and to help others acheive their full potential</span>
-                <a href="#">My Mission Statement</a>
-            </div>
-            <br>
-            <div class="tooltip">
-                <span class="tooltiptext">The last 3 books I read include: The king James version of the New Testement, Quantum Supremacy by Michio Kaku, and Hyperspace by Michio Kaku. See my thoughts on these books in my literary review page!</span>
-                <a href="#">Literature</a>
-            </div>
-            <br>
+
             <div class="tooltip">
                 <span class="tooltiptext">Faith, Family, and the pursuit of wisdom, wellness, and personal development.</span>
                 <a href="#">My Inspiration</a>
@@ -31,16 +27,26 @@
             <br>
             <div class="tooltip">
                 <span class="tooltiptext">Here's a PDF copy of my Resume.</span>
-                <a href="./assets/LaTeX/rezzy.pdf" target="_blank">My Resume</a>
+                <a href="./assets/LaTeX/RayCookePublicResume.pdf" target="_blank">My Resume</a>
+            </div>
+            <br>
+            <div class="tooltip">
+                <span class="tooltiptext">Email Me at raymond@cooke.world</span>
+                <a href="mailto:raymond@cooke.world">Contact</a>
             </div>
             <br>
             <audio controls>
                 <source src="./assets/Audio/onrecord.mp3" type="audio/mpeg">
             </audio>
-            </div>
+            
+            <a href="https://github.com/RayIsLearning" target="_blank"><img src="./assets/Images/github-mark.png" alt="Github logo" height="40px" width="auto"></a>
+            
+            <a href="https://www.linkedin.com/in/raycooke93" target="_blank"><img src="./assets/Images/LI-Logo.png" alt="LinkedIn logo" height="40px" width="auto"></a>
+        </div>
         </div> 
     </div>
-    <div id="content"></div><!--the dynamically loaded stuff-->
+    <div id="content"></div><!--the dynamically loaded grid stuff-->
+
 </body>
 
 <!--JS that handles routing and single page loading -->

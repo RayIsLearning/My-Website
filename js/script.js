@@ -61,3 +61,12 @@ function changeColor() {
 //runs color scripe every 2 seconds
 setInterval(changeColor, 2000);
 
+function frameHeight() {
+    const iframe = document.getElementById('resizeHeight');
+    iframe.style.height = window.innerWidth < 601 ? '300px' : '600px';
+  }
+  
+window.addEventListener('resize', frameHeight);
+window.addEventListener('load', frameHeight);
+
+
