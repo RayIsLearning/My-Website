@@ -76,7 +76,7 @@
       'header header header header header header' 
       'left left middle middle right right' 
       'footer footer footer footer footer footer';
-     /*grid-column-gap: 10px; - if you want gap between the columns */
+     /*grid-column-gap: 10px;*/
     height: auto;
     object-fit: cover;
     overflow: hidden;
@@ -146,13 +146,9 @@
       grid-area:unset; /* All grid items combined into one scrollable zone */
       display: flex;         /* Enables stacking */
       flex-direction: column; /* Aligns grid items vertically */
-                  /* Spacing between items gap: 10px; */
-      
       overflow-y: auto;      /* Single scrollbar for grid items */
       max-height: 100%;      /* Ensures content doesn't exceed available space */
-      
-      
-  }
+    }
   }
   .fa {
     padding: 20px;
@@ -179,7 +175,6 @@
   max-width: 50px;
   height: auto;
 }
-
 
 #f {
   margin: 0;
@@ -337,11 +332,12 @@
 
   /* Default image size */
   .responsive-img-small {
-    align-self: center;
     justify-self: center;
-    display: block;
-    margin: auto;
-    display: inline-block;
+    display: flex;            
+    margin: auto;             
+    align-items: center;      
+    justify-content: center;  
+    
   }
 
   /* Media query for screens smaller than 600px */

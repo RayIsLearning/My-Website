@@ -1,4 +1,4 @@
-import * as twgl from './js/twgl-full.module.js';
+import * as twgl from './twgl-full.module.js';
     function main() {
       const m4 = twgl.m4;
       const gl = document.getElementById("c").getContext("webgl");
