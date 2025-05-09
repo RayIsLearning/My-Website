@@ -1,5 +1,4 @@
 * {box-sizing: border-box;}
-
   .header {
     position: relative;
     display: inline-block;
@@ -22,41 +21,26 @@
     color: white;
 }
 
-  .noCanvas canvas {
+  .noCanvas canvas {/*for when the canvas is excluded*/
     display: none;
   }
 
   @media (max-width: 600px) {
     canvas {
-        height: 100px;  /* Changes the height of the canvas on small screens */
+        height: 120px;  /* Changes the height of the canvas on small screens */
     }
   }
 
   @keyframes colorChange {
-    0% {
-      background-color: #ff6347; 
-    }
-    50% {
-      background-color: #32cd32; 
-    }
-    100% {
-      background-color: #1e90ff; 
-    }
+    0% {background-color: #ff6347; }
+    50% {background-color: #32cd32; }
+    100% {background-color: #1e90ff; }
   }
-  /*
-  body {
-    animation: colorChange 5s infinite; /* 5 seconds, loop infinitely *//*
-  }
-
-  body {
-    font-family: Arial, Helvetica, sans-serif, 'Times New Roman', Times, serif;
-    background-color: #bfdbffee; 
-  }*/
 
   body {
     font-family: "Monomakh", system-ui, sans-serif;
-    background-color: #bfdbffee; /* Initial background color */
-    animation: colorChange 100s infinite; /* 100 seconds, loop infinitely */
+    animation: colorChange 10s infinite; /* 100 seconds, loop infinitely */
+    
   }
 
   /* Style the header */
@@ -82,6 +66,20 @@
     overflow: hidden;
     box-sizing: border-box;
   } 
+
+  .project-grid-container {
+    display: grid;
+    grid-template-areas: 
+      'header header header header header header' 
+      'left1 left middle middle right right1' 
+      'footer footer footer footer footer footer';
+    height: auto;
+    object-fit: cover;
+    overflow: hidden;
+    box-sizing: border-box;
+  } 
+  .left1,
+  .right1,
   .left,
   .middle,
   .right {
@@ -90,10 +88,8 @@
     padding-right: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
-        
   }
   
-  /* Style the left column */
   .left {
     grid-area: left;
     text-align: center;
@@ -102,24 +98,21 @@
     color:white;
   }
   .left:hover{
-    background-color: rgba(255, 255, 255, 0.747);
+    background-color: white;
     color:black;
   }
   
-  
-  /* Style the middle column */
   .middle {
     grid-area: middle;
     text-align: center;
     overflow: hidden;
-    
   }
 
   .middle:hover{
-    background-color: rgb(180, 250, 255);
+    background-color: rgb(252, 0, 0);
+    color: #000000;
   }
   
-  /* Style the right column */
   .right {
     grid-area: right;
     text-align: center;
@@ -129,18 +122,43 @@
   }
 
   .right:hover{
+    overflow: hidden;
     background-color: white;
-    color:black;
+    color: black;
   }
 
-  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  .right1 {
+    grid-area: right1;
+    background-color:black;
+    overflow: hidden;
+  }
+
+  .right1:hover{
+    background-color: inherit;
+    
+  }
+
+  .left1 {
+    grid-area: left1;
+    background-color:black;
+  }
+
+  .left1:hover {
+    background-color: inherit;
+    
+  }
+
+  /* makes the three columns stack on top of each other instead of next to each other */
   @media (max-width:1401px) {
-    .grid-container {
+    .grid-container,
+    .project-grid-container {
       grid-template-areas: 
           'header'
+          'left1'
           'left'
           'middle'
           'right'
+          'right1'
           'footer';
       grid-template-rows: auto;
       grid-area:unset; /* All grid items combined into one scrollable zone */
@@ -148,6 +166,31 @@
       flex-direction: column; /* Aligns grid items vertically */
       overflow-y: auto;      /* Single scrollbar for grid items */
       max-height: 100%;      /* Ensures content doesn't exceed available space */
+    }
+    .middle {
+      border-left: 3px solid black;
+      border-right: 3px solid black;
+    }
+    .left1{
+      background-color: inherit; 
+      border-left: 3px solid black;
+      border-right: 3px solid black;
+    }
+    .right1{
+      background-color: inherit; 
+      border-left: 3px solid black;
+      border-right: 3px solid black;
+    }
+    .nextIcon {
+      transform: rotate(90deg);
+      display: block;            
+      margin: auto;             
+    }
+  
+    .backIcon {
+      transform: rotate(90deg);
+      display: block;            
+      margin: auto;  
     }
   }
   .fa {
@@ -172,7 +215,7 @@
 }
 
 .footer img {
-  max-width: 50px;
+  max-width: 43px;
   height: auto;
 }
 
@@ -258,10 +301,7 @@
     top: 8px;
     right: 15px;
     }
-    .middle {
-      border-left: 3px solid black;
-      border-right: 3px solid black;
-    }
+
   }
  
   .tooltip {
@@ -290,8 +330,6 @@
     left: 50%;
     transform: translateX(-50%); /* Centers horizontally */
     max-width: calc(100% - 40px); /* 20px padding from left and right */
-    
-    
   }
   
   .tooltip:hover .tooltiptext {
@@ -332,28 +370,50 @@
 
   /* Default image size */
   .responsive-img-small {
+    width: 300px;
+    height: auto;
     justify-self: center;
     display: flex;            
     margin: auto;             
     align-items: center;      
     justify-content: center;  
-    
+  }
+
+  .responsive-small {
+    width: 125px;
+    height: auto;
+    justify-self: center;
+    display: flex;            
+    margin: auto;             
+    align-items: center;      
+    justify-content: center;  
   }
 
   /* Media query for screens smaller than 600px */
   @media (max-width: 600px) {
     .responsive-img {
         width: 200px;  /* Resize image for small screens */
-        height: 200px;
+        height: 200px; 
     }
     .responsive-img-small{
         width: 250px;  /* Resize image for small screens */
         height: 100px;
+        justify-self: center;
+        display: flex;            
+        margin: auto;             
+        align-items: center;      
+        justify-content: center;  
     }
+
     .middle {
       border-left: 3px solid black;
       border-right: 3px solid black;
     }
+
+  }
+    .nextIcon {
+      height: 85px;
+      width: auto;
   }
 
   /* Media query for screens larger than 600px but smaller than 1000px */
@@ -373,6 +433,18 @@
       animation-iteration-count: 20;
       animation-timing-function: ease-in-out, linear;
     }
+    .nextIcon {
+      transform: rotate(90deg);
+      display: block;            
+      margin: auto;             
+    }
+  
+    .backIcon {
+      transform: rotate(90deg);
+      display: block;            
+      margin: auto;  
+    }
+    
   }
   .overlay-text {
     position: absolute;
@@ -407,7 +479,12 @@
     animation-iteration-count: 20;
     animation-timing-function: ease-in-out, linear;
   }
-}
+
+  .nextIcon {
+    transform: rotate(90deg);
+    display: block;            
+    margin: auto;             
+  }
 
 @media (max-width: 480px) {
   .overlay-text {
@@ -428,6 +505,18 @@
     animation-iteration-count: 20;
     animation-timing-function: ease-in-out, linear;
   }
+
+  .nextIcon {
+    transform: rotate(90deg);
+    display: block;            
+    margin: auto;             
+  }
+
+  .backIcon {
+    transform: rotate(90deg);
+    display: block;            
+    margin: auto;  
+  }
 }
 
 .timeline {
@@ -439,4 +528,8 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+}
+
+#cheese {
+  cursor: pointer;
 }

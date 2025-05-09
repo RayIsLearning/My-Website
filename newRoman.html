@@ -1,24 +1,29 @@
-<div class="grid-container">
-    <div class="left"><b>Enter an integer to be converted to Roman Notation</b><br><br><br><br><br><br><br>
+<div class="grid-container" class="responsive-small">
+    <div class="left"><b>Enter an integer to be converted to Roman Notation.</b><br><br>
         <form action="#">
-            <label for="Integer">Enter your Number ➡</label> 
-            <input type="number" id="Integer" name="Integer">
-    </div>
-
-    <div class="middle"><b>Click on Ceasar to Convert!</b><br><br>
-            <button><img src="./assets/Images/Cheesar.jpg" alt="Click me or hit enter!" class="responsive-img"></button>
+            <input type="number" id="Integer" name="Integer" placeholder="Enter your number" inputmode="numeric" pattern="[0-9]*" 
+            onkeydown="if(event.keyCode === 13) {
+                alert('You have pressed the enter key, please use the submit button.');
+                 return false;}">
         </form>
-    </div>  
+    </div>
+    
+    <div class="middle">
+        <b>Click on Caesar to Convert!</b><br><br>
 
-    <div class="right"><b>Some Text</b><br><br>
-        <img src="./assets/Images/string.jpg" alt="Swirly Graphic" class="responsive-img">
+
+        <a id="cheese" name="cheese" onclick="cheeseIt();">
+            <img src="./assets/Images/Cheesar.jpg" alt="Click me!" class="responsive-small">
+        </a>
+        
     </div>
 
-    <div class="footer">
-        <a href="/software" id="softwareLink">
-            <img src="./assets/Images/left.png" alt="Home" width="200" height="200">
-        </a>
-        <h3>Et Tu, Brute?</h3>
+    <div class="right"><b>Result</b><br><br>
+        <div id="roman"></div>
+    </div>
+
+    <div class="footer"><a href="/software" id="softwareLink"><img src="./assets/Images/left.png" alt="Home"></a>
+        <h3> Et Tu, Brute?</h3>
         <b>Jesus Saves &nbsp;</b>
         <a href="https://bible.usccb.org/bible/matthew/5?3=#48005003" target="_blank">
         <img src="./assets/Images/spiritbig.jpg" class="shake-on-hover" width="200" height="200">
