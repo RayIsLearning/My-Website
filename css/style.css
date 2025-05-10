@@ -533,3 +533,13 @@
 #cheese {
   cursor: pointer;
 }
+
+@keyframes roll {
+  0%   { transform: rotate(0deg) scale(1); opacity: 0.6; }
+  50%  { transform: rotate(180deg) scale(1.2); opacity: 1; }
+  100% { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+
+.animate-die {
+  animation: roll 0.5s ease;
+}

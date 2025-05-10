@@ -14,10 +14,6 @@
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
-                    setTimeout(() => {
-                        window.location.href = "/"; // Redirects to home
-                    }, 3000); // 3000 milliseconds = 3 seconds
-                    
                 });
         }
         
@@ -35,10 +31,6 @@
 
                 .catch(error => {
                     console.error('Error loading the content:', error);
-                    setTimeout(() => {
-                        window.location.href = "/"; // Redirects to home
-                    }, 3000); // 3000 milliseconds = 3 seconds
-                    
                 });
         } 
 
@@ -55,10 +47,6 @@
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
-                    setTimeout(() => {
-                        window.location.href = "/"; // Redirects to home
-                    }, 3000); // 3000 milliseconds = 3 seconds
-                    
                 });
         } 
 
@@ -75,10 +63,22 @@
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
-                    setTimeout(() => {
-                        window.location.href = "/"; // Redirects to home
-                    }, 3000); // 3000 milliseconds = 3 seconds
-                    
+                });
+        } 
+
+                else if (url === '/dice') {//dice game
+            fetch('dice.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                    // Reapply the default CSS
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = './css/style.css';  
+                    document.head.appendChild(link);
+                })
+                .catch(error => {
+                    console.error('Error loading the content:', error);
                 });
         } 
 
@@ -105,10 +105,6 @@
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
-                    setTimeout(() => {
-                        window.location.href = "/"; // Redirects to home
-                    }, 3000); // 3000 milliseconds = 3 seconds
-                    
                 });
         }
 
@@ -125,10 +121,6 @@
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
-                    setTimeout(() => {
-                        window.location.href = "/"; // Redirects to home
-                    }, 3000); // 3000 milliseconds = 3 seconds
-                    
                 });
         } 
         
@@ -158,6 +150,11 @@
             document.querySelector('.header-text').textContent = 'Numeral Converter';
         } 
 
+        else if (url === '/dice') {
+            document.title = 'Dice Game';
+            document.querySelector('.header-text').textContent = 'Dice Game';
+        } 
+
         else if (url === '/electric') {
             document.title = 'Electronics';
             document.querySelector('.header-text').textContent = 'Electronic Projects';
@@ -172,7 +169,6 @@
             setTimeout(() => {
                 window.location.href = "/"; // Redirects to home
             }, 3000); // 3000 milliseconds = 3 seconds
-            
         }
     }
 
@@ -228,6 +224,37 @@
             cheeseIt();        
         }
 
+        else if (event.target.closest('#diceLink')) {
+            event.preventDefault();
+            navigateTo('/dice');
+        }
+
+        else if (event.target.closest('#rollBtn')) {
+            const d1 = getRandomInt(1, 6);
+            const d2 = getRandomInt(1, 6);
+
+            const img1 = document.getElementById("d1");
+            const img2 = document.getElementById("d2");
+
+            // Update dice image sources
+            img1.src = `./assets/Images/dice${d1}.png`;
+            img2.src = `./assets/Images/dice${d2}.png`;
+
+            // Re-trigger animation
+            img1.classList.remove("animate-die");
+            img2.classList.remove("animate-die");
+            void img1.offsetWidth; // trigger reflow                
+            void img2.offsetWidth;
+
+            img1.classList.add("animate-die");
+            img2.classList.add("animate-die");
+        }
+
+        // Random number helper
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
     });
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -242,12 +269,10 @@
         const roman = document.querySelector("#roman");//roman numeral converter code
     });
 
-    let isNeg = false;
-        
+    let isNeg = false;  
     function cheeseIt() {
-        const inNumber = document.querySelector("#Integer"); // Ensure input is selected
-        const roman = document.querySelector("#roman"); // Ensure result element is selected
-    
+        const inNumber = document.querySelector("#Integer"); 
+        const roman = document.querySelector("#roman"); 
         let num = parseInt(inNumber.value); //get user input
         num = negIt(num);//converts negs
         console.log(num);//prints to console
@@ -286,3 +311,12 @@
       function closeNav() {
         document.getElementById("myNav").style.height = "0%";
       }
+      
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      
+
+
+
+
