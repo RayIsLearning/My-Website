@@ -50,7 +50,7 @@
                 });
         } 
 
-        else if (url === '/roman') {//WARES
+        else if (url === '/roman') {//roman numeral converter
             fetch('newRoman.html')
                 .then(response => response.text())
                 .then(data => {
@@ -66,7 +66,7 @@
                 });
         } 
 
-                else if (url === '/dice') {//dice game
+        else if (url === '/dice') {//dice game
             fetch('dice.html')
                 .then(response => response.text())
                 .then(data => {
@@ -80,6 +80,102 @@
                 .catch(error => {
                     console.error('Error loading the content:', error);
                 });
+        } 
+
+        else if (url === '/misc') {//blog and media section
+            fetch('misc.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                    // Reapply the default CSS
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = './css/style.css';  
+                    document.head.appendChild(link);
+                })
+                .catch(error => {
+                    console.error('Error loading the content:', error);
+                });
+        } 
+
+        else if (url === '/movies') {//movies
+        fetch('movies.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+                    // Reapply the default CSS
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = './css/style.css';  
+                    document.head.appendChild(link);
+            })
+            .catch(error => {
+                console.error('Error loading the content:', error);
+            });
+        } 
+
+        else if (url === '/music') {//music
+        fetch('music.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+                // Reapply the default CSS
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = './css/style.css';  
+                document.head.appendChild(link);
+            })
+            .catch(error => {
+                console.error('Error loading the content:', error);
+            });
+        } 
+
+        else if (url === '/interests') {//interests
+        fetch('interests.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+                // Reapply the default CSS
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = './css/style.css';  
+                document.head.appendChild(link);
+             })
+            .catch(error => {
+                console.error('Error loading the content:', error);
+            });
+        } 
+
+        else if (url === '/interests1') {//interests page 2
+        fetch('interests1.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+                // Reapply the default CSS
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = './css/style.css';  
+                document.head.appendChild(link);
+             })
+            .catch(error => {
+                console.error('Error loading the content:', error);
+            });
+        } 
+
+        else if (url === '/members') {//members area
+        fetch('blog.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+                    // Reapply the default CSS
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = './css/style.css';  
+                document.head.appendChild(link);
+            })
+            .catch(error => {
+                console.error('Error loading the content:', error);
+            });
         } 
 
         else if (url === '/timeline') { // timeline
@@ -139,6 +235,31 @@
             document.title = 'About';
             document.querySelector('.header-text').textContent = 'All About Ray';
         } 
+
+        else if (url === '/misc') {
+            document.title = 'Media';
+            document.querySelector('.header-text').textContent = 'Some Things';
+        } 
+
+        else if (url === '/movies') {
+            document.title = 'Movies';
+            document.querySelector('.header-text').textContent = 'Click on the Posters';
+        } 
+
+        else if (url === '/music') {
+            document.title = 'Music';
+            document.querySelector('.header-text').textContent = 'Some Home-Made Tunes';
+        } 
+
+        else if (url === '/interests' || url === '/interests1') {
+            document.title = 'Interests';
+            document.querySelector('.header-text').textContent = 'I Would Rather Be...';
+        } 
+
+        else if (url === '/members') {
+            document.title = 'Members only';
+            document.querySelector('.header-text').textContent = 'Hello Member';
+        } 
         
         else if (url === '/software') {
             document.title = 'Projects';
@@ -191,6 +312,41 @@
             navigateTo('/');
         } 
         
+        else if (event.target.closest('#aboutLink')) {
+            event.preventDefault();
+            navigateTo('/about');
+        } 
+
+        else if (event.target.closest('#movieLink')) {
+            event.preventDefault();
+            navigateTo('/movies');
+        } 
+
+        else if (event.target.closest('#musicLink')) {
+            event.preventDefault();
+            navigateTo('/music');
+        } 
+
+        else if (event.target.closest('#interestLink')) {
+            event.preventDefault();
+            navigateTo('/interests');
+        } 
+
+        else if (event.target.closest('#interest1Link')) {//second page
+            event.preventDefault();
+            navigateTo('/interests1');
+        } 
+
+        else if (event.target.closest('#memberLink')) {
+            event.preventDefault();
+            navigateTo('/members');
+        } 
+
+        else if (event.target.closest('#miscLink')) {
+            event.preventDefault();
+            navigateTo('/misc');
+        } 
+
         else if (event.target.closest('#aboutLink')) {
             event.preventDefault();
             navigateTo('/about');
@@ -316,6 +472,10 @@
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
       
+    function toggleOverlay(imgElement) {
+        const overlay = imgElement.nextElementSibling;
+        overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
+  }
 
 
 
