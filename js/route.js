@@ -238,7 +238,7 @@
 
         else if (url === '/misc') {
             document.title = 'Media';
-            document.querySelector('.header-text').textContent = 'Some Things';
+            document.querySelector('.header-text').textContent = 'Media';
         } 
 
         else if (url === '/movies') {

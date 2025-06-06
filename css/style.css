@@ -43,7 +43,6 @@
     
   }
 
-  /* Style the header */
   .header {
     grid-area: header;
     background-color: #69696900;
@@ -58,8 +57,6 @@
       'header header header header header header' 
       'left left middle middle right right' 
       'footer footer footer footer footer footer';
-     /*grid-column-gap: 10px;*/
-
     height: auto;
     object-fit: cover;
     overflow: hidden;
@@ -73,7 +70,6 @@
       'header header header header header header' 
       'left left middle middle right right' 
       'footer footer footer footer footer footer';
-     /*grid-column-gap: 10px;*/
     height: auto;
     object-fit: cover;
     overflow: hidden;
@@ -173,7 +169,7 @@
     
   }
 
-  /* makes the three columns stack on top of each other instead of next to each other */
+  /*stack */
   @media (max-width:1401px), (orientation: portrait) {
     .grid-container,
     .project-grid-container,
@@ -248,10 +244,10 @@
 
 #f {
   margin: 0;
-  text-align: center; /* Centers the text inside h3 */
-  position: absolute; /* Take it out of the flow of flexbox */
-  left: 50%; /* Move it to the center horizontally */
-  transform: translateX(-50%); /* Adjust to ensure it’s perfectly centered */
+  text-align: center; 
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%);
 }
 
 .footer b{
@@ -274,7 +270,7 @@
   
   .overlay-content {
     position: relative;
-    top: 28%;/* Default value */
+    top: 28%;
     width: 100%;
     text-align: center;
     margin-top: 30px;
@@ -282,7 +278,7 @@
 
   @media only screen and (max-width:1401px) {
     .overlay-content {
-        top: 50%; /* Adjust the top percentage for smaller screens */
+        top: 50%; 
     }
   }
   
@@ -386,29 +382,20 @@
     position: relative;
     display: inline-block;
     width: 100%; 
-    max-width: 467px; /* Keeps image from being too wide */
+    max-width: 467px; 
     margin: auto;
 }
 
-    /* Default image size */
   .responsive-img {
     width: 467px;
     height: 467px;
   }
 
   .soundbox{
-
     height: 467px;
     width: auto;
-
-          
-          
-    
-
   }
 
-
-  /* Default image size */
   .responsive-img-small {
     width: 300px;
     height: auto;
