@@ -27,6 +27,9 @@
                     link.rel = 'stylesheet';
                     link.href = './css/style.css';  // Replace with the actual path to your default CSS file
                     document.head.appendChild(link);
+
+                    trackPageView(url);
+                    
                 })
 
                 .catch(error => {
@@ -44,6 +47,8 @@
                     link.rel = 'stylesheet';
                     link.href = './css/style.css';  // Replace with the actual path to your default CSS file
                     document.head.appendChild(link);
+
+                    trackPageView(url);
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
@@ -60,6 +65,8 @@
                     link.rel = 'stylesheet';
                     link.href = './css/style.css';  
                     document.head.appendChild(link);
+
+                    trackPageView(url);
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
@@ -76,6 +83,8 @@
                     link.rel = 'stylesheet';
                     link.href = './css/style.css';  
                     document.head.appendChild(link);
+
+                    trackPageView(url);
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
@@ -92,6 +101,8 @@
                     link.rel = 'stylesheet';
                     link.href = './css/style.css';  
                     document.head.appendChild(link);
+
+                    trackPageView(url);
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
@@ -108,6 +119,8 @@
                 link.rel = 'stylesheet';
                 link.href = './css/style.css';  
                     document.head.appendChild(link);
+
+                    trackPageView(url);
             })
             .catch(error => {
                 console.error('Error loading the content:', error);
@@ -124,6 +137,8 @@
                 link.rel = 'stylesheet';
                 link.href = './css/style.css';  
                 document.head.appendChild(link);
+
+                trackPageView(url);
             })
             .catch(error => {
                 console.error('Error loading the content:', error);
@@ -140,6 +155,8 @@
                 link.rel = 'stylesheet';
                 link.href = './css/style.css';  
                 document.head.appendChild(link);
+
+                trackPageView(url);
              })
             .catch(error => {
                 console.error('Error loading the content:', error);
@@ -156,6 +173,8 @@
                 link.rel = 'stylesheet';
                 link.href = './css/style.css';  
                 document.head.appendChild(link);
+
+                trackPageView(url);
              })
             .catch(error => {
                 console.error('Error loading the content:', error);
@@ -172,6 +191,8 @@
                 link.rel = 'stylesheet';
                 link.href = './css/style.css';  
                 document.head.appendChild(link);
+
+                trackPageView(url);
             })
             .catch(error => {
                 console.error('Error loading the content:', error);
@@ -198,6 +219,8 @@
         
                     // Append the new CSS file to the <head>
                     document.head.appendChild(link);
+
+                    trackPageView(url);
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
@@ -214,6 +237,8 @@
                     link.rel = 'stylesheet';
                     link.href = './css/style.css';  
                     document.head.appendChild(link);
+
+                    trackPageView(url);
                 })
                 .catch(error => {
                     console.error('Error loading the content:', error);
@@ -476,6 +501,13 @@
         const overlay = imgElement.nextElementSibling;
         overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
   }
+
+  function trackPageView(url) { // For analytics when page reloads
+    gtag('event', 'page_view', {
+        page_path: url,
+        page_title: document.title
+    });
+}
 
 
 
